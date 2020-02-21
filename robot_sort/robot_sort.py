@@ -142,16 +142,26 @@ if __name__ == "__main__":
 # I will write a recursive bubble sort for the robot to use as he traverses the list.
 # I will also have the robot slowly go through the list and change numbers as indicated above To do that
 
-    # I will want to have a if statement that checks the light. Which I am using to if the Robot has a None being held. 
+    # I will want to have a if statement that checks the light. Which I am using to if the Robot has a None being held.
+
+
         # If the light is on (None is being held) You will want to return the robot to 0 and put it there, taking the number from  position 0 and sorting that way
+
+
             # If the robot is holding none and is at 0 you want to swap the items there, move him to the right one 
             # Turn off the light and start your comparissons. 
+
+
         # Base case will be logic based on if the none is the last item that we have to swap, if so we will swap the items and return LIST
+
             # My current Idea for this is to check the 3 numbers to the right and compare them to see if the robot should move forward with more sorting.
 
     # While the robots light is off(SHould be most of the time)
+
         # The Robot will be carrying itms from left to right comparing items as he traverses the list swapping as he goes. 
+
             # If the item in the robots hands is less than the one he is comparing against he will slide to the left one, swap the items and then continue his pass.
+            
                 # Ideally with each pass of this the robot will have to make less and less swaps 
 
         
