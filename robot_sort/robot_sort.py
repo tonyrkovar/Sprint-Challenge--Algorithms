@@ -92,37 +92,53 @@ class SortingRobot:
         """
         return self._light == "ON"
 
-    def sort(self):
-        print(f'{self._position}: POSITION')
-        print(self._item)
+    # def track_time(self):
+    #     return self._time
 
-        if self._item == None:
-           if self._position == 0:
-               self.swap_item()
-               self.move_right()
-            else:
-                self.position = 0
-                
-        if self._light == "OFF":
-            if self.can_move_right() == True:
-                if self.compare_item() == -1 or self.compare_item() == 0:
-                    if self.can_move_left() == True:
-                        self.move_left()
-                        self.swap_item()
-                        self._position = 0                       
-                elif self.compare_item() == 1:
-                    self.move_right()
+    def sort(self):
+        def right():
+            self.move_right()
+        def left():
+            self.move_left()
+
+        self.set_light_on()
+
+
+        while self.light_is_on() == True:
+            while self.can_move_right() == True:
+                # print(self._position, f'RIGHT', self._item, self._light)
+                if self.compare_item() == 1:
+                    # print("Step")
+                    right()
+                elif self.compare_item() == -1:
+                    # print('Restep')
+                    self.swap_item()
+                    self.set_light_off()
                 elif self.compare_item() == None:
                     self.swap_item()
-            else: 
-                if self.compare_item() == 1:
-                    self.move_right()
-                print(f'Are we here? ')
+                    right()
 
-        
-        print(f'ITEM: {self._item}')
-        return self.sort()
+            while self.can_move_left() == True:
+                # print(f'LEFT',self._position)
+                if self.compare_item() == -1:
+                    # print("Step")
+                    left()
+                elif self.compare_item() == 1:
+                    # print('Restep')
+                    print(self._list)
+                    print(self._item)
+                    self.swap_item()
+                    self.set_light_on()
+                elif self.compare_item() == None:
+                    self.swap_item()
+                    left()
+                
 
+            
+                    
+        print(self._light)
+        print(self._position, self._item)
+        return self._list
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
@@ -161,7 +177,7 @@ if __name__ == "__main__":
         # The Robot will be carrying itms from left to right comparing items as he traverses the list swapping as he goes. 
 
             # If the item in the robots hands is less than the one he is comparing against he will slide to the left one, swap the items and then continue his pass.
-            
+
                 # Ideally with each pass of this the robot will have to make less and less swaps 
 
         
